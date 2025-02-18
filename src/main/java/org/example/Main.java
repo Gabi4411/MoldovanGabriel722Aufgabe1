@@ -1,17 +1,38 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome test!");
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.apache.commons.csv.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+class Helper<T extends  Archiv> {
+    List<T> elements;
+
+    public Helper() {
+        this.elements = new ArrayList<>();
+    }
+
+    public void addElement(T element) {
+        elements.add(element);
+    }
+
+    public List<T> getAllElements() {
+        return new ArrayList<>(elements);
+    }
+
+    public void readFromXml(String filename, Class<T[]> clazz) throws IOException {
+        XmlMapper xmlMapper = new XmlMapper();
+        T[] dataArray = xmlMapper.readValue(new File(filename), clazz);
+        elements.addAll(List.of(dataArray));
+    }
+}
+
+public class Main<> {
+    public static void main(String[] args) {
     }
 }
