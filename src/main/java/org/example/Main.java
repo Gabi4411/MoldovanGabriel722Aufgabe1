@@ -30,9 +30,20 @@ class Helper<T extends  Archiv> {
         T[] dataArray = xmlMapper.readValue(new File(filename), clazz);
         elements.addAll(List.of(dataArray));
     }
+
+//    public List<String> filter(int number) {
+//        return elements.stream()
+//                .map(T::getGlobalerEinfluss)
+//                .filter(globalerEinfluss -> globalerEinfluss > number)
+//                .forEach(n -> System.out::println(n.getHeld()));
+//    }
 }
 
-public class Main<> {
+public class Main {
     public static void main(String[] args) {
+        String xmlFile = "src/main/resources/marvel_konfruntationen.xml";
+
+        Helper<Archiv> helper = new Helper<>();
+        System.out.println(helper.elements);
     }
 }
